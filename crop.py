@@ -11,7 +11,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_squared_error
 
-
 tab1, tab2 = st.tabs(["Home Page","Insights"])
 
 df = pd.read_csv(r"D:\Python Projects\Production\CROP PRODUCTION\FAOSTAT_data.csv")
@@ -61,7 +60,6 @@ DF_FINAL['Area Harvesting'] = DF_FINAL['Area Harvesting'].astype(float)
 DF_FINAL['Yeild'] = DF_FINAL['Yeild'].astype(float)
 
 
-
 models = [LinearRegression(),DecisionTreeRegressor(),RandomForestRegressor(),AdaBoostRegressor()]
 r2_Score = []
 
@@ -78,9 +76,41 @@ print(r2_Score)
 best_r2score = max(r2_Score)
 best_modelname =  r2_Score.index(best_r2score)
 
-print (f"the best modef is: {models[best_modelname]}")
+
 
 model1 = models[best_modelname]
 
 with tab1:
-        st.write(x_train)
+        st.title("Predicting Crop Production Based on Agricultural Data")
+        st.divider() 
+        st.header("Algorithm used to Predict", divider="green" )
+        st.subheader (f"Best Model: :blue[{models[best_modelname]}]")
+        st.subheader (f"R2 Score: :blue[{max(r2_Score)}] ")
+        st.divider() 
+        st.header("DataPoints For Prediction", divider= "green")
+        Ar_Code = st.text_input("Enter Area Code")
+        Item_code = st.text_input("Enter Item Code")
+        Year = st.text_input("Enter Year")
+        Area_Harvesting = st.text_input("Enter Area Harvested")
+        Yeild = st.text_input("Enter Yeild")
+        NEW_DF = pd.DataFrame()
+        NEW_DF['Area Code (M49)'] = [Ar_Code]
+        NEW_DF['Item Code (CPC)'] = [Item_code]
+        NEW_DF['Year'] = [Year]
+        NEW_DF['Area Harvesting'] = [Area_Harvesting]
+        NEW_DF['Yeild'] = [Yeild]
+
+        
+        
+
+        if st.button('Prediction'):
+                NEW_DF['Area Code (M49)'] = NEW_DF['Area Code (M49)'].astype(float)
+                NEW_DF['Item Code (CPC)'] = NEW_DF['Item Code (CPC)'].astype(float)
+                NEW_DF['Year'] = NEW_DF['Year'].astype(float)
+                NEW_DF['Area Harvesting'] = NEW_DF['Area Harvesting'].astype(float)
+                NEW_DF['Yeild'] = NEW_DF['Yeild'].astype(float)
+                st.write(NEW_DF)
+                Prediction = model1.predict(NEW_DF)
+                st.write(f"The Predicted Production Value : :red{Prediction}")
+
+        
