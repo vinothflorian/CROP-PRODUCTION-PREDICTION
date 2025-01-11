@@ -19,3 +19,18 @@ Across Regions: Compare production (Production) across different areas (Area) to
 Productivity Analysis
 Examine variations in Yield to identify efficient crops and regions.
 Calculate productivity ratios: Production/Area harvested to cross-verify yields.
+3.Libraries used
+ 1. pandas as pd
+ 2.streamlit as st
+ 3.sklearn.linear_model import LinearRegression
+ 4.sklearn.tree import DecisionTreeRegressor
+ 5.sklearn.ensemble import AdaBoostRegressor,RandomForestRegressor
+ 6.sklearn.model_selection import train_test_split
+ 7.sklearn.preprocessing import LabelEncoder
+ 8.sklearn.metrics import r2_score
+ 9.numpy as np
+4.Machine learning models used for prediction
+ 1.Linear Regression
+ 2.Decision Tree regressor
+ 3.Random Forest Regressor
+ 4. AdaBoost Regressor
