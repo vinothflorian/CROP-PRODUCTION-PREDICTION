@@ -21,6 +21,7 @@ Examine variations in Yield to identify efficient crops and regions.
 Calculate productivity ratios: Production/Area harvested to cross-verify yields.
 
 3.Libraries used
+
  1. pandas as pd
  2.streamlit as st
  3.sklearn.linear_model import LinearRegression
@@ -33,6 +34,7 @@ Calculate productivity ratios: Production/Area harvested to cross-verify yields.
 
 
 4.Machine learning models used for prediction
+
  1.Linear Regression
  2.Decision Tree regressor
  3.Random Forest Regressor
